@@ -14,33 +14,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.assignment.vs.domain.Question;
 import com.assignment.vs.domain.UserInfo;
+import com.assignment.vs.service.QuestionService;
 import com.assignment.vs.service.UserService;
 
-import jakarta.validation.Valid;
-
 @RestController
-@RequestMapping("/user")
-public class UserController {
-    
+@RequestMapping("/question")
+public class QuestionController {
+    private QuestionService questionService;
     private UserService userService;
 
-    public UserController(UserService userService){
+    public QuestionController(QuestionService questionService, UserService userService){
+        this.questionService = questionService;
         this.userService = userService;
     }
 
-    @PostMapping("/entry")
-    public ResponseEntity<Object> createOrLog(@Valid @RequestBody UserInfo user){
-        UserInfo u = userService.saveOrGet(user);
-        return ResponseEntity.ok().body("User Id: "+u.getId());
-        
+    @PostMapping("/create")
+    public ResponseEntity<Object> save(@RequestBody Question question){
+        UserInfo ui = userService.getUser(question.getUserId());
+        if(ui==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User: Not Found");
+        }
+        Long id = questionService.create(question, ui);
+        return ResponseEntity.ok().body("Question is created with "+id);
     }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
+    public Map<String, String> handleValidationException(MethodArgumentNotValidException notValidEx){
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach(e->{
+        notValidEx.getBindingResult().getAllErrors().forEach(e->{
             errors.put(((FieldError) e).getField(), e.getDefaultMessage());
         });
         return errors;

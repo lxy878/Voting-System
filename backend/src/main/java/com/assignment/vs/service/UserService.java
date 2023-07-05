@@ -23,5 +23,11 @@ public class UserService {
         }
     }
 
+    public UserInfo getUser(Long id){
+        Optional<UserInfo> ou = userRepository.findById(id);
+        if(!ou.isPresent()) return null;
+        return ou.get();
+    }
+
     
 }

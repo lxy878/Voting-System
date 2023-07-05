@@ -27,8 +27,12 @@ public class UserServiceTests {
         // check length
         // character check
         // unique
-        UserInfo u = new UserInfo(1L, "abc");
-        UserInfo u2 = new UserInfo(2L, "abc");
+        UserInfo u = new UserInfo();
+        u.setId(1L);
+        u.setName("abc");
+        UserInfo u2 = new UserInfo();
+        u2.setId(1L);
+        u2.setName("abc");
         when(userRepository.save(any(UserInfo.class))).thenReturn(u);
         UserInfo savedUser = userService.saveOrGet(u);
         assertEquals(u.getId(), savedUser.getId());
