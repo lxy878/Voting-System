@@ -35,8 +35,8 @@ public class UserInfo {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Only Alphanumeric Characters")
     private String name;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Question> questions;
+    // @OneToMany(mappedBy = "user")
+    // private Set<Question> questions;
 
     // @ManyToMany
     // @JoinTable(

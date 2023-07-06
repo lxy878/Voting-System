@@ -40,7 +40,7 @@ public class QuestionController {
         return ResponseEntity.ok().body("Question is created with "+id);
     }
 
-
+    // handle ConstraintViolationException
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationException(MethodArgumentNotValidException notValidEx){

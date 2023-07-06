@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +33,8 @@ public class UserController {
     @PostMapping("/entry")
     public ResponseEntity<Object> createOrLog(@Valid @RequestBody UserInfo user){
         UserInfo u = userService.saveOrGet(user);
-        return ResponseEntity.ok().body("User Id: "+u.getId());
         
+        return ResponseEntity.ok().body(u);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
