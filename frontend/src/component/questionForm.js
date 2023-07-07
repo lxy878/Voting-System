@@ -26,7 +26,7 @@ export default function QuestionForm(){
         <div><button onClick={onClick}>Save</button></div>
     </div>
     <div>
-        <h3>My Questions {questions.length}</h3>
+        <h3>My Questions: {questions.length}</h3>
         <ul>
             {questions.map(q=><li key={q.id}>{q.content}, Created {showDateTime(q.createTimestamp)}</li>)}
         </ul>

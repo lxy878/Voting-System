@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserQuestion {
     @EmbeddedId
-    private UserQuestionKey id=new UserQuestionKey();
+    private UserQuestionKey id;
     
     @ManyToOne
     @MapsId("userId")

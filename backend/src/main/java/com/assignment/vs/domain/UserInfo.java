@@ -2,8 +2,7 @@ package com.assignment.vs.domain;
 
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,9 +23,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(
-    generator = ObjectIdGenerators.PropertyGenerator.class, 
-    property = "id")
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +34,7 @@ public class UserInfo {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Only Alphanumeric Characters")
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "votedUser")
     private Set<UserQuestion> votedQuestions;
 }

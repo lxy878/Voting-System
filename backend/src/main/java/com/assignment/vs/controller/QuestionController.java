@@ -82,9 +82,11 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Vote: User already Voted the Question");
         }
         // update question
+        question.setTotalVotes(question.getTotalVotes()+1);
         if(vote) question.setYesVotes(question.getYesVotes()+1);
         else question.setNoVotes(question.getNoVotes()+1);
-        question.setTotalVotes(question.getTotalVotes()+1);
+        question.setPercentageOfYes((float)question.getYesVotes()/question.getTotalVotes());
+        question.setPercentageOfNo((float)question.getNoVotes()/question.getTotalVotes());
         questionService.update(question);
 
         return ResponseEntity.ok().body("vote id: "+uq.getId().toString());

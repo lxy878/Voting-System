@@ -27,8 +27,8 @@ export default function ViewVotes(){
             <td>{q.content}</td>
             <td>{showDateTime(q.createTimestamp)}</td>
             <td>{q.totalVotes}</td>
-            <td>{q.percentageOfYes}%</td>
-            <td>{q.percentageOfNo}%</td>
+            <td>{q.percentageOfYes*100}%</td>
+            <td>{q.percentageOfNo*100}%</td>
             </tr>)}
         </tbody>
     </table>
