@@ -1,26 +1,33 @@
 # Voting System Developing Environment
 * OS: MacOS
+* IDE: IntelliJ
+## Backend
 * Language: Java 11
 * Framework: Spring Boot
 * In-memory Database: H2
 * Project: Maven
-* IDE: IntelliJ
+## Frontend
+* Language: Javascript
+* Framework: Reactjs
+* In-memory: Redux
+* other: Nodejs
 
-## Build .jar 
+## Running Frontend
+### with npm
+```
+ npm install 
+```
+```
+ npm start
+```
+
+## Running with Backend
 ### with Maven
-
-### with IntelliJ
-
-
-## Run 
-### with Docker
 ```
-docker build -t lxy/app .
-docker run -p 8080:8080 lxy/app
+mvn build
 ```
-### with .jar
 ```
-java -jar target/*.jar
+mvn run
 ```
 ## Endpoints
 
