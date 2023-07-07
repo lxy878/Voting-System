@@ -37,11 +37,11 @@ public class Question {
     @CreationTimestamp
     private LocalDateTime createTimestamp;
     
-    private Long totalVotes;
-    private Long likeVotes;
-    private Long dislikeVotes;
-    private Double percentageOfLike;
-    private Double percentageOfDislike;
+    private Integer totalVotes=0;
+    private Integer yesVotes=0;
+    private Integer noVotes=0;
+    private Float percentageOfYes=0.00f;
+    private Float percentageOfNo=0.00f;
     
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
