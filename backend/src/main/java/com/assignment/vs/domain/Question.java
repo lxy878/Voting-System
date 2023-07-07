@@ -1,7 +1,6 @@
 package com.assignment.vs.domain;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,12 +9,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,9 +30,9 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Question is be Blank")
+    @NotBlank(message = "Question is Blank")
     @NotEmpty(message = "Question is Empty")
-    // @Max(value=200, message="Question no more than 200 characters")
+    @Size(max=200, message = "Question no more than 200 characters")
     private String question;
 
     @CreationTimestamp

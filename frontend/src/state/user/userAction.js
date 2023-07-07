@@ -1,5 +1,4 @@
 import axios from 'axios'
-import userReducer from './userReducer'
 export function login(name){
 
     return function(dispatch){
