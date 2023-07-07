@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllQuestions } from "../state/question/questionAction";
+import { showDateTime } from "../common/DateTimeForm";
 export default function ViewVotes(){
     const questions = useSelector(state=>state.questionReducer.questions)
     const dispatch = useDispatch()
@@ -16,6 +17,7 @@ export default function ViewVotes(){
     <table>
         <thead><tr>
             <th>Question</th>
+            <th>Created</th>
             <th>Total Vote</th> 
             <th>Yes</th>
             <th>No</th>
@@ -23,6 +25,7 @@ export default function ViewVotes(){
         <tbody>
         {questions.map(q=><tr key={q.id}>
             <td>{q.content}</td>
+            <td>{showDateTime(q.createTimestamp)}</td>
             <td>{q.totalVotes}</td>
             <td>{q.percentageOfYes}%</td>
             <td>{q.percentageOfNo}%</td>

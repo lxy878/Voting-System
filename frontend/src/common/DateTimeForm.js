@@ -1,4 +1,4 @@
 export function showDateTime(data){
     const date = new Date(data)
-    return `at ${date.toLocaleTimeString()} on ${date.toLocaleDateString('en-us')}`
+    return `AT ${date.toLocaleTimeString()} ON ${date.toLocaleDateString('en-us')}`
 }
