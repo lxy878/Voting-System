@@ -1,5 +1,7 @@
 package com.assignment.vs.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.assignment.vs.domain.Question;
@@ -18,5 +20,17 @@ public class QuestionService {
     public Long create(Question question, UserInfo user){
         question.setUser(user);
         return questionRepository.save(question).getId();
+    }
+
+    public List<Question> getAllByUserId(Long uid){
+        return questionRepository.findAllbyUserId(uid);
+    }
+
+    public List<Question> getAll(){
+        return questionRepository.findAll();
+    }
+
+    public List<Question> getAllByUserIdAndContent(Long id, String content){
+        return questionRepository.findAllByUserIdAndContent(id, content);
     }
 }

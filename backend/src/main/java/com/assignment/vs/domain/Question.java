@@ -11,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -33,10 +32,10 @@ public class Question {
     @NotBlank(message = "Question is Blank")
     @NotEmpty(message = "Question is Empty")
     @Size(max=200, message = "Question no more than 200 characters")
-    private String question;
+    private String content;
 
     @CreationTimestamp
-    private LocalDateTime createTimessTime;
+    private LocalDateTime createTimestamp;
     
     private Long totalVotes;
     private Long likeVotes;
@@ -50,6 +49,7 @@ public class Question {
 
     @Transient
     private Long userId;
+
     // @ManyToMany(mappedBy = "votedQuestions")
     // private Set<UserInfo> users;
     
