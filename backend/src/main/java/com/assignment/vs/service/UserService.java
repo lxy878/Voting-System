@@ -28,6 +28,4 @@ public class UserService {
         if(!ou.isPresent()) return null;
         return ou.get();
     }
-
-    
 }

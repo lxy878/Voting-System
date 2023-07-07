@@ -6,7 +6,7 @@
 * Project: Maven
 * IDE: IntelliJ
 
-## Buid .jar 
+## Build .jar 
 ### with Maven
 
 ### with IntelliJ
