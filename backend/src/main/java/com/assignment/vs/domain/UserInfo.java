@@ -37,4 +37,8 @@ public class UserInfo {
     @JsonIgnore
     @OneToMany(mappedBy = "votedUser")
     private Set<UserQuestion> votedQuestions;
+
+    public UserInfo(String name){
+        this.name = name;
+    }
 }

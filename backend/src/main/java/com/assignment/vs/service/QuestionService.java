@@ -66,7 +66,7 @@ public class QuestionService {
         }
         UserQuestion uq = new UserQuestion();
         uq.setId(uqk);
-        uq.setVotedUser(user);;
+        uq.setVotedUser(user);
         uq.setVotedQuestion(question);
         uq.setVote(vote);
         return userQuestionRepository.save(uq);
