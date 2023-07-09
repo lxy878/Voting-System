@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllQuestions } from "../state/question/questionAction";
 import { showDateTime } from "../common/DateTimeForm";
+import {Container, Table} from 'react-bootstrap'
 export default function ViewVotes(){
     const questions = useSelector(state=>state.questionReducer.questions)
     const dispatch = useDispatch()
@@ -11,10 +12,9 @@ export default function ViewVotes(){
         dispatch(getAllQuestions())
     },[])
     
-    return (<>
-    
+    return (<Container>
     <NavLink to="/">Home</NavLink>
-    <table>
+    <Table bordered variant="secondary">
         <thead><tr>
             <th>Question</th>
             <th>Created</th>
@@ -31,6 +31,6 @@ export default function ViewVotes(){
             <td>{q.percentageOfNo*100}%</td>
             </tr>)}
         </tbody>
-    </table>
-    </>)
+    </Table>
+    </Container>)
 }

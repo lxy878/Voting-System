@@ -10,7 +10,7 @@ export function login(name){
         })
         .catch((err)=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     }

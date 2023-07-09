@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import { getAllNotVoted, getAllVoted, saveVote} from "../state/question/questionAction";
 import { showDateTime } from "../common/DateTimeForm";
+import {Badge, Button, Container, ListGroup} from 'react-bootstrap'
+
 export default function Voting(){
     const dispatch = useDispatch()
     const {questions, votedQuestions} = useSelector(state=>state.questionReducer)
@@ -20,19 +22,21 @@ export default function Voting(){
         dispatch(saveVote({vote, qid, uid}))
     }
 
-    return (<>
+    return (<Container>
     <NavLink to="/">Home</NavLink>
-    <h2>Questions for Voting: {questions.length}</h2>
-    <div>
-        {questions.map(q=><div key={q.id}>
-            {q.content} create at {showDateTime(q.createTimestamp)}
-            <button qid={q.id} value="true" onClick={onClick}>Yes</button>
-            <button qid={q.id} value="false" onClick={onClick}>No</button>
-        </div>)}
-    </div>
-    <h2>Voted Questions: {votedQuestions.length}</h2>
-    <div>
-        {votedQuestions.map(q=><div key={q.id.questionId}>{q.votedQuestion.content} {q.vote? "Yes" : "No"}</div>)}
-    </div>
-    </>)
+    <h3>Questions for Voting: {questions.length}</h3>
+    <ListGroup>
+        {questions.map(q=><ListGroup.Item key={q.id}>
+            <div>{q.content}</div> <div>create at {showDateTime(q.createTimestamp)}</div>
+            <Button qid={q.id} value="true" onClick={onClick}>Yes</Button>{' '}
+            <Button qid={q.id} value="false" onClick={onClick}>No</Button>
+        </ListGroup.Item>)}
+    </ListGroup>
+    <h2>My Voted Questions: {votedQuestions.length}</h2>
+    <ListGroup>
+        {votedQuestions.map(q=><ListGroup.Item key={q.id.questionId}>
+            <Badge>{q.vote? "Yes" : "No"}</Badge> {q.votedQuestion.content}
+        </ListGroup.Item>)}
+    </ListGroup>
+    </Container>)
 }

@@ -3,6 +3,8 @@ import {NavLink} from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
 import { saveQuestion, getAllQuestions } from "../state/question/questionAction";
 import { showDateTime } from "../common/DateTimeForm";
+import {Button, Container, Form, ListGroup} from 'react-bootstrap'
+
 export default function QuestionForm(){
     const [content, setContent] = useState("")
     const user = useSelector(state=>state.userReducer.user)
@@ -19,17 +21,20 @@ export default function QuestionForm(){
         dispatch(getAllQuestions('/'+user.id))
     }, [])
 
-    return (<>
+    return (<Container>
     <div><NavLink to="/">Home</NavLink></div>
-    <div>
-        <div>Question: <input type="text" onChange={(e)=>setContent(e.target.value)}/></div>
-        <div><button onClick={onClick}>Save</button></div>
-    </div>
-    <div>
-        <h3>My Questions: {questions.length}</h3>
-        <ul>
-            {questions.map(q=><li key={q.id}>{q.content}, Created {showDateTime(q.createTimestamp)}</li>)}
-        </ul>
-    </div>
-    </>)
+    <h3>Create A Question</h3>
+    <Form>
+        <Form.Group>
+        <Form.Label>Content:</Form.Label>
+        <Form.Control type="text" onChange={(e)=>setContent(e.target.value)}/>
+        </Form.Group>
+        <Button onClick={onClick}>Save</Button>
+    </Form>
+    
+    <h3>My Questions: {questions.length}</h3>
+    <ListGroup>
+        {questions.map(q=><ListGroup.Item key={q.id}><div>{q.content}</div><div>Created {showDateTime(q.createTimestamp)}</div></ListGroup.Item>)}
+    </ListGroup>
+    </Container>)
 }

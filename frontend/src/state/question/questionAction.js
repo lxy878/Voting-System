@@ -10,7 +10,7 @@ export function saveQuestion(data){
             dispatch(getAllQuestions('/'+data.userId))
         }).catch(err=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     }
@@ -28,7 +28,7 @@ export function saveVote(data){
             dispatch(getAllVoted({uid}))
         }).catch(err=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     }
@@ -42,7 +42,7 @@ export function getAllNotVoted(data){
             dispatch({type: 'GetAllNotVoted', questions})
         }).catch(err=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     
@@ -58,7 +58,7 @@ export function getAllVoted(data){
             dispatch({type: 'GetAllVoted', votedQuestions})
         }).catch(err=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     }
@@ -73,7 +73,7 @@ export function getAllQuestions(uid=""){
             
         }).catch(err=>{
             let message = err.response.data
-            alert(message)
+            alert(JSON.stringify(message))
             console.log(message)
         })
     }
