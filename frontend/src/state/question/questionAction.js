@@ -9,7 +9,9 @@ export function saveQuestion(data){
             console.log(resp.data)
             dispatch(getAllQuestions('/'+data.userId))
         }).catch(err=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     }
 }
@@ -25,7 +27,9 @@ export function saveVote(data){
             dispatch(getAllNotVoted({uid}))
             dispatch(getAllVoted({uid}))
         }).catch(err=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     }
 }
@@ -37,7 +41,9 @@ export function getAllNotVoted(data){
             const questions = resp.data 
             dispatch({type: 'GetAllNotVoted', questions})
         }).catch(err=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     
     }
@@ -51,7 +57,9 @@ export function getAllVoted(data){
             console.log("voted ",votedQuestions)
             dispatch({type: 'GetAllVoted', votedQuestions})
         }).catch(err=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     }
 }
@@ -64,7 +72,9 @@ export function getAllQuestions(uid=""){
             dispatch({type: 'GetAll', questions})
             
         }).catch(err=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     }
 }

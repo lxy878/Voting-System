@@ -58,5 +58,12 @@ public class Question{
     @OneToMany(mappedBy = "votedQuestion")
     private Set<UserQuestion> userVoted;
     
-    
+    public Question updateVote(Boolean vote){
+        this.totalVotes += 1;
+        if(vote) this.yesVotes +=1;
+        else this.noVotes += 1;
+        this.percentageOfYes = (float) this.yesVotes/this.totalVotes;
+        this.percentageOfNo = (float) this.noVotes/this.totalVotes;
+        return this;
+    }
 }

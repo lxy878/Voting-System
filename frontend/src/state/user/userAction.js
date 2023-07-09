@@ -9,7 +9,9 @@ export function login(name){
             dispatch({type: 'Login', user: resp.data})
         })
         .catch((err)=>{
-            console.log(err.response.data)
+            let message = err.response.data
+            alert(message)
+            console.log(message)
         })
     }
 }

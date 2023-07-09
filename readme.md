@@ -10,7 +10,7 @@
 * Language: Javascript
 * Framework: Reactjs
 * In-memory: Redux
-* other: Nodejs
+* Other: Nodejs
 
 ## Running Frontend
 ### with npm
@@ -21,7 +21,7 @@
  npm start
 ```
 
-## Running with Backend
+## Running Backend
 ### with Maven
 ```
 mvn build
